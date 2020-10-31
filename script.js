@@ -10,6 +10,8 @@ var correctAnswer = document.getElementById("correct");
 
 var answers = document.querySelectorAll("span");
 
+var startBtn = document.getElementById("startBtn");
+
 function setTime() {
     var timerInterval = setInterval(function() {
       secondsLeft--;
@@ -45,6 +47,10 @@ function setTime() {
 
   console.log(answers.length);
 
+ 
+  
+  
+startBtn.addEventListener("click", setTime);
 
 
   // correctAnswer.addEventListener("click", addScore());
