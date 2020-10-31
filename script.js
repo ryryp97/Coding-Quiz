@@ -3,7 +3,7 @@
 var timeEl = document.querySelector(".time");
 
 //This value controls how many seconds the timer is counting down from
-var secondsLeft = 100;
+var secondsLeft = 10;
 
 var score = 0;
 
@@ -27,7 +27,7 @@ function setTime() {
 
     if (secondsLeft === 0) {
       clearInterval(timerInterval);
-      // sendMessage();
+      endQuiz();
     }
 
   }, 1000); //This number here is in milliseconds so every 1000 ms = 1 second
@@ -36,6 +36,12 @@ function setTime() {
 function hideStart() {
   startPage.setAttribute("style", "display: none");
 };
+
+function endQuiz() {
+  startPage.setAttribute("style", "display: block");
+  secondsLeft = 10;
+  timeEl.textContent = "";
+}
 
 
 function startQuiz() {
@@ -72,7 +78,12 @@ console.log(question);
 
 for (var i = 0; i < answer.length; i++) {
   answer[i].addEventListener("click", function () {
-    console.log("test");
+    if (answer.correct) {
+      console.log("test");
+    }
+    else {
+      console.log("oops");
+    }
   });
 };
 
