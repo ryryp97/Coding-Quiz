@@ -1,9 +1,14 @@
 h1 {
     text-align: right;
+    float: right;
 }
 
 .hide {
     display: none;
+}
+
+p {
+    font-size: large;
 }
 
 .container {
@@ -16,6 +21,8 @@ h1 {
 li {
     text-align: left;
     padding-bottom: 5px;
+    margin-top: 3px;
+    margin-bottom: 3px;
 }
 
 li span {
