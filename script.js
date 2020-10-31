@@ -11,9 +11,11 @@ var score = 0;
 
 var startPage = document.getElementById("start-page");
 
-var question = document.getElementById("question-one");
+var question1 = document.getElementById("question-one");
 
 var correctAnswer = document.getElementsByClassName("correct");
+
+var wrongAnswer = document.getElementsByClassName("wrong");
 
 var answer = document.querySelectorAll("span");
 
@@ -45,14 +47,8 @@ function endQuiz() {
 
 
 function startQuiz() {
-  question.setAttribute("style", "display: block");
+  question1.setAttribute("style", "display: block");
 };
-
-
-//This is calling on the countdown timer function, will put this in with a button that starts the quiz
-// setTime();
-
-
 
 
 // answer.addEventListener("mouseover", mouseOver);
@@ -72,21 +68,39 @@ function startQuiz() {
 
 console.log(answer);
 
-console.log(startPage);
+console.log(wrongAnswer);
 
-console.log(question);
+console.log(question1);
 
-for (var i = 0; i < answer.length; i++) {
-  answer[i].addEventListener("click", function () {
-    if (answer.correct) {
-      console.log("test");
-    }
-    else {
-      console.log("oops");
-    }
-  });
-};
+console.log(correctAnswer);
 
+console.log(score);
+
+// for (var i = 0; i < answer.length; i++) {
+//   answer[i].addEventListener("click", function () {
+//     if (answer.className = "correct") {
+//       console.log("test");
+//     }
+//     else {
+//       console.log("oops");
+//     }
+//   });
+// };
+
+for (var i = 0; i < correctAnswer.length; i++) {
+  correctAnswer[i].addEventListener("click", function() {
+    score += 1;
+    console.log("correct")
+    console.log(score);
+  })
+}
+
+for (var i = 0; i < wrongAnswer.length; i++) {
+  wrongAnswer[i].addEventListener("click", function() {
+    secondsLeft -= 2;
+    console.log("wrong")
+  })
+}
 
 
 startBtn.addEventListener("click", setTime);
