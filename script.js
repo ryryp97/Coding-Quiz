@@ -29,6 +29,8 @@ var answer = document.querySelectorAll("span");
 
 var startBtn = document.getElementById("startBtn");
 
+var displayScore = document.getElementById("displayScore");
+
 //This function controls the timer
 function setTime() {
   var timerInterval = setInterval(function () {
@@ -66,12 +68,13 @@ function endQuiz() {
   timeEl.textContent = "";
 }
 
-
+//This function brings the first question onto the page
 function startQuiz() {
   question1.setAttribute("style", "display: block");
 
 };
 
+//These for loops allow for the next question to be brought on screen once an answer is selected and depending on the answer selected, properly add to the score/take away time
 for (var i = 0; i < correctAnswer.length; i++) {
   correctAnswer[i].addEventListener("click", function () {
     score += 1;
@@ -91,6 +94,7 @@ for (var i = 0; i < wrongAnswer.length; i++) {
   })
 }
 
+//This function is nested within the for loops and is what allows the next question to be displayed and the previous question to be hidden
 function nextQuestion() {
   for (var i = 0; i < questions.length; i++) {
     questions[i].style.display = "none";
@@ -102,3 +106,7 @@ function nextQuestion() {
 startBtn.addEventListener("click", setTime);
 startBtn.addEventListener("click", hideStart);
 startBtn.addEventListener("click", startQuiz);
+
+displayScore.addEventListener("click", function getHighScore() {
+  alert(localStorage.getItem("name") + " " + localStorage.getItem("score"))
+})
