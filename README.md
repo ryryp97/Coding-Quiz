@@ -2,9 +2,13 @@
 
 This repository contains a program that is a coding quiz, specifically on javascript.  It was created in order to practice coding JavaScript algorithms and DOM manipulation.
 
-The site can be reached here: 
+The site can be reached here: [Code Quiz](https://ryryp97.github.io/Homework-04/)
 
 This is what the coding quiz looks like:
+
+![Code Quiz 1](images/Code_Quiz1)
+
+![Code Quiz 2](images/Code_Quiz2)
 
 
 
