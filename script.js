@@ -2,32 +2,40 @@
 //This variable stores the element where time will be displayed
 var timeEl = document.querySelector(".time");
 
-//This value controls how many seconds the timer is counting down from
-var secondsLeft = 10;
+//These values control the initial conditions
+var secondsLeft = 60;
 
 var score = 0;
+
+var index = 0;
 
 //These variables are storing the locations of certain elements
 
 var startPage = document.getElementById("start-page");
 
-var question1 = document.getElementById("question-one");
+var question1 = document.getElementById("question1");
+
+var questions = document.getElementsByClassName("question");
+
+
 
 var correctAnswer = document.getElementsByClassName("correct");
 
 var wrongAnswer = document.getElementsByClassName("wrong");
 
+
+
 var answer = document.querySelectorAll("span");
 
 var startBtn = document.getElementById("startBtn");
 
-
+//This function controls the timer
 function setTime() {
   var timerInterval = setInterval(function () {
     secondsLeft--;
-    timeEl.textContent = "Time left: " + secondsLeft;
+    timeEl.textContent = "Time: " + secondsLeft;
 
-    if (secondsLeft === 0) {
+    if (secondsLeft === 0 || secondsLeft < 0 || index > 7) {
       clearInterval(timerInterval);
       endQuiz();
     }
@@ -35,78 +43,62 @@ function setTime() {
   }, 1000); //This number here is in milliseconds so every 1000 ms = 1 second
 };
 
+//This function hides the start page
 function hideStart() {
   startPage.setAttribute("style", "display: none");
 };
 
+
+//This function contains all the actions for the end of the quiz like resetting the timer and score and also stores the score value along with the initials of the examinee
 function endQuiz() {
+  for (i = 0; i < questions.length; i++) {
+    questions[i].style.display = "none";
+  };
   startPage.setAttribute("style", "display: block");
-  secondsLeft = 10;
+  alert("Your score was " + score);
+  var name = prompt("Enter your initials");
+  localStorage.setItem("score", score);
+  localStorage.setItem("name", name);
+  
+  secondsLeft = 60;
+  score = 0;
+  index = 0;
   timeEl.textContent = "";
 }
 
 
 function startQuiz() {
   question1.setAttribute("style", "display: block");
+
 };
 
-
-// answer.addEventListener("mouseover", mouseOver);
-
-// answer.addEventListener("mouseout", mouseOut);
-
-
-// for (var i = 0; i < answer.length; i++) {
-//   function mouseOver() {
-//     answer[i].setAttribute("style", "background-color: purple");
-//   };
-
-//   function mouseOut() {
-//     answer[i].setAttribute("style", "background-color: blue");
-//   };
-// };
-
-console.log(answer);
-
-console.log(wrongAnswer);
-
-console.log(question1);
-
-console.log(correctAnswer);
-
-console.log(score);
-
-// for (var i = 0; i < answer.length; i++) {
-//   answer[i].addEventListener("click", function () {
-//     if (answer.className = "correct") {
-//       console.log("test");
-//     }
-//     else {
-//       console.log("oops");
-//     }
-//   });
-// };
-
 for (var i = 0; i < correctAnswer.length; i++) {
-  correctAnswer[i].addEventListener("click", function() {
+  correctAnswer[i].addEventListener("click", function () {
     score += 1;
-    console.log("correct")
+    index += 1;
+    console.log("correct");
     console.log(score);
+    nextQuestion();
   })
 }
 
 for (var i = 0; i < wrongAnswer.length; i++) {
-  wrongAnswer[i].addEventListener("click", function() {
+  wrongAnswer[i].addEventListener("click", function () {
     secondsLeft -= 2;
-    console.log("wrong")
+    index += 1;
+    console.log("wrong");
+    nextQuestion();
   })
 }
 
+function nextQuestion() {
+  for (var i = 0; i < questions.length; i++) {
+    questions[i].style.display = "none";
+    questions[index].style.display = "block";
+  };
+};
 
+//These event listeners are for the intitial start button press and start the quiz
 startBtn.addEventListener("click", setTime);
 startBtn.addEventListener("click", hideStart);
 startBtn.addEventListener("click", startQuiz);
-
-
-
-
