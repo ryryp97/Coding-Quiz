@@ -107,6 +107,7 @@ startBtn.addEventListener("click", setTime);
 startBtn.addEventListener("click", hideStart);
 startBtn.addEventListener("click", startQuiz);
 
-displayScore.addEventListener("click", function getHighScore() {
+//This adds an event listener to the score button and get the stored name and score data from local storage
+displayScore.addEventListener("click", function getScore() {
   alert(localStorage.getItem("name") + " " + localStorage.getItem("score"))
 })
