@@ -6,9 +6,9 @@ The site can be reached here: [Code Quiz](https://ryryp97.github.io/Homework-04/
 
 This is what the coding quiz looks like:
 
-![Code Quiz 1](images/Code_Quiz1)
+![Code Quiz 1](images/Code_Quiz1.png)
 
-![Code Quiz 2](images/Code_Quiz2)
+![Code Quiz 2](images/Code_Quiz2.png)
 
 
 
