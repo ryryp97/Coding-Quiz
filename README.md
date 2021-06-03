@@ -1,4 +1,4 @@
-# Homework-04
+# Coding-Quiz
 
 This repository contains a program that is a coding quiz, specifically on javascript.  It was created in order to practice coding JavaScript algorithms and DOM manipulation.
 
